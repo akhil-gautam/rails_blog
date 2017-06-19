@@ -1,0 +1,20 @@
+<div id="button">
+	<%= link_to " New Article", new_article_path, class: "btn btn-primary btn-md glyphicon glyphicon-plus-sign" %>
+</div>
+
+<% @articles.each do |article| %>
+  <div class="container">
+    <h2 class="title"><%= link_to article.title, article %> 
+      <span class="glyphicon glyphicon-time date"> Created on: <%= article.created_at.strftime("%B, %d, %Y")%> | </span> 
+      <span class="glyphicon glyphicon-time date"> Updated on: <%= article.updated_at.strftime("%B, %d, %Y")%></span> 
+
+      <% if can? :update, article %>
+        <span class="date">|User: 
+       	<%= article.user.email %></span>
+      <% end %>
+        
+  	</h2><hr>
+  </div>
+<% end %>
+
+

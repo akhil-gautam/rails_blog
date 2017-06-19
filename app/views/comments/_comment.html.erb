@@ -1,0 +1,19 @@
+<div class="container">
+	<p>
+	  <strong>Name:</strong>
+	  <%= comment.name %>
+	</p>
+	 
+	<p>
+	  <strong>Comment:</strong>
+	  <%= comment.body %>
+	</p>
+	<p>
+		<strong class="glyphicon glyphicon-time"> Created <%= time_ago_in_words(comment.created_at) %> ago.</strong>
+	</p>
+	<p>
+		<%= link_to 'Delete Comment', [comment.article, comment],
+	               method: :delete,
+	               data: { confirm: 'Are you sure?' } %>
+	</p><br>
+</div>

@@ -1,0 +1,118 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+html, body {
+	font-family: 'Raleway', sans-serif;
+	background-image: url("background.jpg");
+}
+
+#sidebar {
+
+	width: 200px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	background: #f5f7f9;
+	padding: 7em 0 0 0;
+	border-right: 1px solid #d6dce0;
+}
+
+ul {
+	list-style: none;
+	text-align: right;
+	padding-right: 3em;
+	li{
+	padding:3px;
+	}
+}
+
+
+#logo {
+		position: absolute;
+		right: 3em;
+		top: 3em;
+		
+}
+.category {
+		padding-top: 20px;
+		font-weight: 700;
+		font-size: 0.7em;
+		text-transform: uppercase;
+		color: #33acb7;
+	}
+
+.sign_in{
+	position: absolute;
+	padding-top: 15em;
+	padding-right: 2px;
+	font-size: 0.7em;
+	font-weight: 900;
+	color: 	#12a9a5;
+	right: 2em;
+	}
+
+#main_content{
+	margin-top: 10px;
+	margin-left: 250px;
+	margin-right: 10px;
+}
+
+.date{
+	font-family: 'Righteous', cursive;
+	font-size: 15px;
+	color: #8e816b;
+
+}
+
+p{
+	display: block;
+}
+
+#error_explanation{
+	background-color:#20B2AA;
+}
+
+.error-message{
+	margin: 10px 0 0 280px;
+	padding: 2px;
+	width: 350px;
+	border: 1px solid #51ba5f;
+	border-radius: 10px;
+	background-color: #51ba5f;
+	color: white;
+	text-align: center;
+}
+
+.about_content p{
+	font-family: 'Righteous', cursive;
+	font-weight: 900px;
+	font-size: 20px;
+	text-align: justify;
+    text-justify: inter-word;
+    margin-right: 65px;
+    background-color: #626466;
+    color: white;
+    padding: 10px;
+}
+
+#button{
+	margin:20px 0 50px 0;
+}
+#user_name{
+	position: absolute;
+	margin-top: 450px;
+	padding: 10px;
+}
