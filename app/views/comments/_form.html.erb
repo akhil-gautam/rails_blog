@@ -1,10 +1,6 @@
-<%= form_for([@article, @article.comments.build], :class => "form-group") do |f| %>
+<%= form_for [@article, @article.comments.build], :remote => true do |f| %>
+
   <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name, :placeholder => "Minimum 5 characters", :class => "form-control" %>
-  </p>
-  <p>
-    <%= f.label :body %><br>
     <%= f.text_area :body, :placeholder => "Maximum 140 characters", :class => "form-control input-lg" %>
   </p>
   <p>

@@ -12,63 +12,11 @@
  *
  *= require_tree .
  *= require_self
- */
-html, body {
-	font-family: 'Raleway', sans-serif;
-	background-image: url("background.jpg");
-}
-
-#sidebar {
-
-	width: 200px;
-	position: absolute;
-	left: 0;
-	top: 0;
-	height: 100%;
-	background: #f5f7f9;
-	padding: 7em 0 0 0;
-	border-right: 1px solid #d6dce0;
-}
-
-ul {
-	list-style: none;
-	text-align: right;
-	padding-right: 3em;
-	li{
-	padding:3px;
-	}
-}
+*/
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 
-#logo {
-		position: absolute;
-		right: 3em;
-		top: 3em;
-		
-}
-.category {
-		padding-top: 20px;
-		font-weight: 700;
-		font-size: 0.7em;
-		text-transform: uppercase;
-		color: #33acb7;
-	}
-
-.sign_in{
-	position: absolute;
-	padding-top: 15em;
-	padding-right: 2px;
-	font-size: 0.7em;
-	font-weight: 900;
-	color: 	#12a9a5;
-	right: 2em;
-	}
-
-#main_content{
-	margin-top: 10px;
-	margin-left: 250px;
-	margin-right: 10px;
-}
 
 .date{
 	font-family: 'Righteous', cursive;
@@ -95,6 +43,11 @@ p{
 	color: white;
 	text-align: center;
 }
+.flash_msg{
+  position: auto;
+	width: 45%;
+	margin-top: 70px;
+}
 
 .about_content p{
 	font-family: 'Righteous', cursive;
@@ -108,11 +61,87 @@ p{
     padding: 10px;
 }
 
-#button{
-	margin:20px 0 50px 0;
+#new_article_button{
+	margin-left: 700px;
+	margin-top: 20px;
 }
-#user_name{
-	position: absolute;
-	margin-top: 450px;
-	padding: 10px;
+
+
+#inner-message {
+    margin: 0 auto;
+}
+
+.profile-pic{
+	margin-top: 5px;
+	border-radius: 50%;
+}
+.intro-header{
+	background-image: url("back2.jpg");
+}
+
+.head-container{
+	margin-top: 100px;
+}
+
+.user_name{
+    text-align: center;
+    text-decoration: underline;
+    color: #333333;
+}
+
+.apple_pagination {
+  background: #f1f1f1;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  padding: 1em;
+  cursor: default; }
+  .apple_pagination a, .apple_pagination span {
+    padding: 0.2em 0.3em; }
+  .apple_pagination .disabled {
+    color: #aaaaaa; }
+  .apple_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background-color: #bebebe;
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.5;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
+  .apple_pagination a {
+    text-decoration: none;
+    color: black; }
+    .apple_pagination a:hover, .apple_pagination a:focus {
+      text-decoration: underline; }
+
+
+      @mixin transition($settings) {
+  -webkit-transition: $settings;
+  -moz-transition: $settings;
+  -ms-transition: $settings;
+  -o-transition: $settings;
+  transition: $settings;
+}
+
+.btn-collapsible {
+  overflow: hidden;
+  @include transition(all 500ms ease-in-out);
+  max-width: 30px;
+
+  &.btn-sm {
+    max-width: 31px;
+    text-decoration: none;
+  }
+
+  &:hover {
+    max-width: 300px;
+    @include transition(all 300ms ease-in-out);
+
+  }
+}
+.about-friend{
+      border-top: solid 1px #eee;
 }

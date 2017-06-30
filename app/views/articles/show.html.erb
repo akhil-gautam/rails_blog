@@ -1,18 +1,4 @@
-<p>
-	<strong>Title:</strong>
-	<%= @article.title %>
-</p>
- 
-<p>
-	<strong>Article:</strong>
-	<%= @article.article %>
-</p>
-
-<p>
-  	<span class="glyphicon glyphicon-time date"><small> Created <%=time_ago_in_words(@article.created_at) %> ago.</small></span> |
-  	<span class="glyphicon glyphicon-time date"><small> Updated <%=time_ago_in_words(@article.updated_at) %> ago.</small></span>
-</p>
-
+<br/>
 <div id="inner_links">
 	<% if can? :update, @article %>
 	<%# if user_signed_in? && current_user.id == @article.user_id %>
@@ -24,15 +10,22 @@
 	 	:method => :delete, :data => { :confirm => "You are about to delete your article!"}, class: "btn btn-primary btn-md glyphicon glyphicon-trash" %> |
 	<% end %>
 
-	<%= link_to ' Back', articles_path, class: "btn btn-primary btn-md glyphicon glyphicon-arrow-left", title: "All Articles"%>
+	<%= link_to ' Back', articles_path, class: "btn btn-primary btn-md glyphicon glyphicon-arrow-left"%>
 	<hr>
 </div>
 <% if user_signed_in? %>
-	<h2 class="badge"><%= pluralize(@article.comments.count, "Comment") %></h2>
-	<%= render @article.comments %>
 
+	<h2 class="badge"><%= pluralize(@article.comments.count, "Comment") %></h2>
+
+	<div id="comment_body">
+		<% @article.comments.each do |comment| %>
+			<%= render '/comments/comment', :comment => comment %>
+		<% end %>
+	</div>
+	
 	<h2>Leave a comment:</h2>
 	<%= render 'comments/form' %>
+
 <% else %>
 	<small><%= link_to 'Sign-In to leave a comment!', '/users/sign_in' %></small>
 <% end %>

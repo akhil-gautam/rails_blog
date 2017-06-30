@@ -7,6 +7,7 @@ gem 'rails', '4.2.8'
 gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'bootstrap-sass', '~> 3.3.6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -26,16 +27,27 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
  gem 'bcrypt', '~> 3.1.7'
 
- gem 'devise', '~> 4.3'
+ gem 'devise', '~> 4.1.1'
+ gem 'will_paginate'
+ 
+ gem 'devise-async'
+ gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+
+ gem "paperclip", "~> 5.0.0"
 
  gem 'cancancan', '~> 1.10'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 # Use Unicorn as the app server
 # gem 'unicorn'
+gem 'sidekiq', '~> 5.0', '>= 5.0.3'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+#tinymce
+gem 'tinymce-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

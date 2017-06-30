@@ -58,8 +58,11 @@ ActionMailer::Base.smtp_settings = {
   :user_name            => "arijitdotsingh@gmail.com",  
   :password             => "akhil1234",  
   :authentication       => :login,  
-  :enable_starttls_auto => true  
+  :enable_starttls_auto => true,
+  :queue_adapter => :sidekiq  
 }  
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+    config.active_job.queue_adapter = :sidekiq
 end

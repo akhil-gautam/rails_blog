@@ -1,0 +1,42 @@
+
+<header class="intro-header" style="background-image: url('<%=current_user.avatar.url(:thumb)%>')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <h1>Friends of <%=current_user.name%></h1>
+                        <hr class="small">
+                        <span class="subheading"><%=raw current_user.about %></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+   
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+				
+				<ul>
+					<% if (current_user.friendships).empty? %>
+						<h3>Sorry! You don't have any friends right now. </h3>
+					<% else %>
+						<h1>Friends:</h1>
+			  				<% for friendship in current_user.friendships %>
+                            <div id="<%= friendship.id%>">
+			    				<li>
+    			      					<%= friendship.friend.name %>
+    			      					<%= link_to "Remove", friendship, method: :delete, remote: true %> 
+			    				</li>
+                            </div>    
+			  				<% end %>
+		  			<% end %>
+				</ul>
+
+				<p><%= link_to "Find New Friends", friendships_path %></p>
+
+            </div>
+        </div>
+    </div>

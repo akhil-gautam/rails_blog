@@ -1,20 +1,44 @@
-<div id="button">
-	<%= link_to " New Article", new_article_path, class: "btn btn-primary btn-md glyphicon glyphicon-plus-sign" %>
-</div>
+    <header class="intro-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="site-heading">
+              <h1>My Blog</h1>
+              <hr class="small">
+              <span class="subheading">A Blog by Akhil</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
 
-<% @articles.each do |article| %>
-  <div class="container">
-    <h2 class="title"><%= link_to article.title, article %> 
-      <span class="glyphicon glyphicon-time date"> Created on: <%= article.created_at.strftime("%B, %d, %Y")%> | </span> 
-      <span class="glyphicon glyphicon-time date"> Updated on: <%= article.updated_at.strftime("%B, %d, %Y")%></span> 
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="post-preview">
+            <%= form_for articles_path, method: :get do |f| %>
+                <p>
+                  <%= f.label "Search for" %>
+                  <%= text_field_tag :query, params[:query] %>
+                  <%= submit_tag "Go", name: nil %>
+                </p>
+            <% end %>
 
-      <% if can? :update, article %>
-        <span class="date">|User: 
-       	<%= article.user.email %></span>
-      <% end %>
-        
-  	</h2><hr>
+            <div id="endlessPage">
+
+              <%= render @articles %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="apple_pagination">
+    <div class="page_info">
+      <%= page_entries_info @posts %>
+    </div>
+    <%= will_paginate @posts, :container => false %>
   </div>
-<% end %>
+
 
 

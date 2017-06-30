@@ -1,0 +1,44 @@
+<header class="intro-header" style="background-image: url('<%=current_user.avatar.url(:thumb)%>')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <h1><%=current_user.name%></h1>
+                        <hr class="small">
+                        <span class="subheading"><%=raw current_user.about %></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+                <% @users.each do |user| %>
+                    <% if user.name != current_user.name %>
+                    <div id="<%= user.id %>" class="rounded-bottom">
+                        <p> 
+                            <%= image_tag user.avatar.url(:thumb), class: "profile-pic" %>
+                            <%= user.name %>
+                             
+                            <%= link_to "      Add Friend", friendships_path(:friend_id => user),
+                                class: "btn btn-success btn-sm btn-collapsible fa fa-check",
+                                :method => :post, :remote => true %>
+                            <div class="about-friend">
+                                <%= raw user.about %>
+                            </div>
+                        </p> 
+                    </div>
+                    <hr>
+                    <% end %>  
+                    
+                <% end %>
+
+            </div>
+        </div>
+    </div>
+
+    <hr>

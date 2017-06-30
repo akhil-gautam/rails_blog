@@ -1,13 +1,24 @@
 class ArticlesController < ApplicationController
 
-	before_action :validate_user, :only => [:show, :edit]
+	before_action :authenticate_user!, :except => [:index]
+	before_action :belongs_to_user, :only => [:destroy, :update]
+	
 
 	def index
-    	@articles = Article.all
-  	end
 
-	def show
+		if params[:query].present?
+			@articles = Article.search(params[:query]).paginate(:page => params[:page])
+			render 'search'
+		else
+    		@articles = Article.all.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+    	end
+  	end
+ 
+
+	def show	
 		@article = Article.find(params[:id])
+		render layout: "show_layout"
+		
 	end
 
 	def new
@@ -21,10 +32,6 @@ class ArticlesController < ApplicationController
 
 	def edit
 		@article = Article.find_by_id(params[:id])
-		unless can? :update, @article
-			flash[:notice] = "Sorry! You are not authorized to edit this article!"
-			redirect_to articles_path
-		end
 	end
 
 	def create
@@ -38,7 +45,8 @@ class ArticlesController < ApplicationController
 	end
 	def update
   		@article = Article.find(params[:id])
- 
+ 		
+
   		if @article.update(article_params)
     		redirect_to @article
   		else
@@ -48,13 +56,8 @@ class ArticlesController < ApplicationController
 
 	def destroy
 		@article = Article.find(params[:id])
-		unless can? :destroy, @article
-			flash[:notice] = "Sorry! You are not authorized to delete this article!"
-			redirect_to articles_path
-		else
-	    	@article.destroy
-	    	redirect_to articles_path
-	    end
+	    @article.destroy
+	    redirect_to articles_path
  	end
 
 	private
@@ -62,12 +65,12 @@ class ArticlesController < ApplicationController
     		params.require(:article).permit(:title, :article)
   		end
 
-  		def validate_user
-  			begin
-  				@article = Article.find(params[:id])
-  			rescue
-  				flash[:alert] = "Sorry! The article doesn't exist."
-  				redirect_to articles_path
-  			end
-  		end
-end
+		def belongs_to_user
+			@article = Article.find_by_id(params[:id])
+			unless can? :destroy, @article
+				flash[:alert] = "Sorry! You are un-authorized to do this!"
+				redirect_to articles_path
+			end
+		end
+
+end  	
